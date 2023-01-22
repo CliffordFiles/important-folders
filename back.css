@@ -1,0 +1,148 @@
+body{
+    background-image: url("ggs.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.login{
+    color: rgba(0, 0, 0, 0.945);
+    width: 382px;
+    background-color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 750px;
+    background-size: 500px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    border-radius: 10px; 
+    padding-right: 40px;
+    padding-left: 40px;
+    
+}
+
+.cre{
+    font-size: 17px;
+    color: rgba(89, 90, 92, 0.89);
+}
+
+.Un1{
+    width: 360px;
+    height: 50px;
+    margin-top: 30px;
+    border-radius: 10px;   
+}
+
+.Ps1{
+    width: 360px;
+    height: 50px;
+    margin-top: 30px;
+    border-radius: 10px;   
+}
+
+.link{
+    margin-top: 15px;
+    font-size: 15px;
+    margin-right: 210px;
+}
+
+.logs{
+    margin-top: 30px;
+    height: 50px;
+    width: 360px;
+    color: white;
+    background-color: rgb(30, 30, 209);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.logs:hover{
+    opacity: 0.8;
+}
+
+.logs:active{
+    opacity: 0.6;
+}
+
+.Sign1{
+    margin-top: 30px;
+    color: rgba(43, 43, 44, 0.89);
+    font-size: 15px;
+}
+
+.google-button {
+    background-color: #5488db; 
+    color: white;
+    margin-top: 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    width: 360px;
+    height: 45px;
+    transition: opacity 0.15s;
+  }
+  
+  .google-button img {
+    margin-right: 0.5em;
+    width: 30px;
+    height: 20px;
+    background-color: white;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-right: 75px;
+  }
+
+  .google-button:hover{
+    opacity: 0.8;
+}
+  .google-button:active{
+    opacity: 0.6;
+}
+  
+  .fb-button {
+    background-color: #2863c4; 
+    color: white;
+    margin-top: 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    width: 360px;
+    height: 45px;
+    transition: opacity 0.15s;
+  }
+  
+  .fb-button img {
+    margin-right: 0.5em;
+    width: 30px;
+    height: 20px;
+    background-color: white;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-right: 67px;
+  }   
+
+  .fb-button:hover{
+    opacity: 0.8;
+}
+  .fb-button:active{
+    opacity: 0.6;
+}
