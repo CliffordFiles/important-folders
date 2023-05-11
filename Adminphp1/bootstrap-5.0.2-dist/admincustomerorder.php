@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, i    nitial-scale=1.0">
+    <title>Drink Delight: Admin Operation</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="navardesign/admindesign.css">
+    <link rel="stylesheet" href="navardesign/tabledesign.css">
+    <script defer src="active_link.js"></script>
+
+</head>
+<body>
+    
+<!-- For Navar -->
+      
+    <?php
+        include('navar/adminnavar.php')
+    ?>
+      <br><br><br><br><br>  
+
+      <div class = "container">
+        <div class ="row">
+        <h5 style="font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 30px; color: green; margin-left:10px;">Customers Order History</h5>
+        </div>
+      </div><br>
+
+<div class="container">
+  <section class="intro">
+    <div class="bg-image h-100" style="background-color: #f5f7fa;">
+      <div class="mask d-flex align-items-center h-100">
+        <div class="container">
+          <div class="table-responsive">
+            <div class="card">
+              <div class="card-body p-0">
+                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+                  <table class="table table-striped mb-0">
+                    <thead style="background-color: #002d72;">
+                      <tr>
+                        <th class="text-center">Order Date</th>
+                        <th class="text-center">Order Tranx ID</th>
+                        <th class="text-center">Order Total</th>
+                        <th class="text-center">Status</th>  
+                        <th class="text-center">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      
+                           require_once('dbconn.php');
+                            try{
+                                $stmt = $conn->prepare("SELECT * FROM usertransaction");
+                                $stmt->execute();
+                                foreach ($stmt->fetchAll() as $row)
+                                {
+                                    $status_color = '';
+                                    if ($row['orderstatus'] == 'On Progress') {
+                                        $status_color = 'orange';
+                                    } elseif ($row['orderstatus'] == 'cancelled') {
+                                        $status_color = 'red';
+                                    } elseif ($row['orderstatus'] == 'Delivered') {
+                                        $status_color = 'Blue'; 
+                                    } elseif ($row['orderstatus'] == 'Pending') {
+                                      $status_color = 'Green'; 
+                                    }
+                                    
+                            ?>
+                          
+                        <tr>
+                          <td class="text-center"><?php echo $row['uorderdate']; ?></td>
+                          <td class="text-center"><?php echo $row['utransac_id']; ?></td>
+                          <td class="text-center"><?php echo $row['uordertotal']; ?></td>
+                          <td class="text-center">
+                                      <span style="color: <?php echo $status_color; ?>; font-weight: bold;"><?php echo $row['orderstatus']; ?></span>
+                                  </td>
+                          <td class="text-center">
+                          <a href="admincustomerorderedit.php?utransac_id=<?php echo $row['utransac_id']; ?>"><i class="bi bi-eye-fill" style="font-size: 24px;"></i></a>
+                        </td>
+                        </tr>
+                        <?php
+                          }
+                        } catch(PDOException $e) {
+                          echo "ERROR: " . $e->getMessage();
+                        }
+                            $conn = null;
+                            ?>
+                     </tbody>     
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div><br><br><br>
+</body>
+</html>
